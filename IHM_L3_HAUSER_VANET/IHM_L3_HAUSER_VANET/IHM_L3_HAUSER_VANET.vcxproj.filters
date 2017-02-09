@@ -19,15 +19,45 @@
     <Filter Include="Fichiers sources\RecuitSimule">
       <UniqueIdentifier>{0e3daace-86aa-4d9f-9683-109417c097e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\PElement">
+      <UniqueIdentifier>{d39694e2-a14e-4949-8d0a-7a5af581e57e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GElement">
+      <UniqueIdentifier>{b1091454-8900-4ffd-b788-012f92603e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GElement">
+      <UniqueIdentifier>{aed04b25-0f3b-49cd-b89e-1b244d3057a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vecteur2D.cpp">
       <Filter>Fichiers sources\RecuitSimule</Filter>
     </ClCompile>
+    <ClCompile Include="GElement.cpp">
+      <Filter>Fichiers sources\GElement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vecteur2D.h">
       <Filter>Fichiers d%27en-tête\RecuitSimule</Filter>
+    </ClInclude>
+    <ClInclude Include="AlgebreLineaire.h">
+      <Filter>Fichiers d%27en-tête\RecuitSimule</Filter>
+    </ClInclude>
+    <ClInclude Include="RecuitSimule.h">
+      <Filter>Fichiers d%27en-tête\RecuitSimule</Filter>
+    </ClInclude>
+    <ClInclude Include="PElement.h">
+      <Filter>Fichiers d%27en-tête\PElement</Filter>
+    </ClInclude>
+    <ClInclude Include="GElement.h">
+      <Filter>Fichiers d%27en-tête\GElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Arete.h">
+      <Filter>Fichiers d%27en-tête\GElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Sommet.h">
+      <Filter>Fichiers d%27en-tête\GElement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
