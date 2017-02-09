@@ -1,4 +1,3 @@
-
 /**
 classe Erreur
 */
@@ -24,5 +23,3 @@ public:
 ostream & operator << (ostream & os, const Erreur & erreur);
 
 #endif
-
-

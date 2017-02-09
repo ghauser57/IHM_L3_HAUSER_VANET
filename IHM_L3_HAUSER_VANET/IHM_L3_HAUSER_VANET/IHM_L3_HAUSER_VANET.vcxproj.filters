@@ -28,6 +28,12 @@
     <Filter Include="Fichiers sources\GElement">
       <UniqueIdentifier>{aed04b25-0f3b-49cd-b89e-1b244d3057a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Erreur">
+      <UniqueIdentifier>{5f992eb1-cf0d-44b8-8864-72a34289e266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Erreur">
+      <UniqueIdentifier>{d42a5bae-1f96-4b93-a8e2-9a7782cb67dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vecteur2D.cpp">
@@ -35,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="GElement.cpp">
       <Filter>Fichiers sources\GElement</Filter>
+    </ClCompile>
+    <ClCompile Include="Erreur.cpp">
+      <Filter>Fichiers sources\Erreur</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="Sommet.h">
       <Filter>Fichiers d%27en-tête\GElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphe.h">
+      <Filter>Fichiers d%27en-tête\GElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Erreur.h">
+      <Filter>Fichiers d%27en-tête\Erreur</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
