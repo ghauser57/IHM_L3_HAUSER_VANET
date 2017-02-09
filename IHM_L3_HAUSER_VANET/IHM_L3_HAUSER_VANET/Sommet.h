@@ -1,3 +1,5 @@
+#pragma once
+#include "GElement.h"
 /**
 Sommet d'un graphe en général
 v est l'information associée au sommet : elle dépend de l'application du graphe

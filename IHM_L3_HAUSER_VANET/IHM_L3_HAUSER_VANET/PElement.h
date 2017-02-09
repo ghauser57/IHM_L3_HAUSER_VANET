@@ -21,6 +21,13 @@ public:
 	static void insertionOrdonnee(T * a,
 		PElement<T> * & l,
 		bool(*estPlusPetitOuEgal)(const T * a1, const T * a2));
+
+	/**
+	* efface toute la liste l
+	* et efface toutes les données *v
+	*
+	* */
+	static void efface2(PElement<T>* & l);
 };
 
 template <class T>
@@ -86,4 +93,14 @@ bool comparaison(const double * a1, const double * a2)
 bool comparaison(const string * a1, const string * a2)
 {
 	return a1->compare(*a2) <= 0;
+}
+
+template <class T>
+/* static */ void PElement<T>::efface2(PElement<T>* & l)
+{
+	if (l)
+	{
+		PElement<T>::efface2(l->s);
+		delete l->v; delete l; l = NULL;
+	}
 }

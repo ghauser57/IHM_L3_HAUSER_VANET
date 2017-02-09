@@ -94,7 +94,7 @@ inline const Vecteur2D & Vecteur2D::operator *=(const double & a)
 * */
 inline double normeSup(const Vecteur2D& u)
 {
-	return max(abs(u.x), abs(u.y));
+	//return max(abs(u.x), abs(u.y));
 }
 
 

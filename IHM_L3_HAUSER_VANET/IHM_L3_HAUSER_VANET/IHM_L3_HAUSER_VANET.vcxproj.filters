@@ -45,6 +45,9 @@
     <ClCompile Include="Erreur.cpp">
       <Filter>Fichiers sources\Erreur</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vecteur2D.h">

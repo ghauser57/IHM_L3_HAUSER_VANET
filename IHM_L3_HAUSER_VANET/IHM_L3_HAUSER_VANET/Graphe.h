@@ -1,3 +1,8 @@
+#pragma once
+#include "Sommet.h"
+#include "Arete.h"
+#include "PElement.h"
+
 template <class S, class T>
 class Graphe
 {
@@ -5,8 +10,8 @@ protected:
 	int prochaineClef;
 public:
 
-	PElement< Sommet<T> > * lSommets; // liste de sommets
-	PElement< Arete<S, T> > * lAretes; // liste d'arêtes
+	PElement<Sommet<T>> * lSommets; // liste de sommets
+	PElement<Arete<S,T>> * lAretes; // liste d'arêtes
 
 	/**
 	* crée un graphe vide
@@ -114,8 +119,8 @@ Arete<S, T> * Graphe<S, T>::creeArete(Sommet<T> * debut, Sommet<T> * fin, const 
 	Arete<S, T> * nouvelleArete;
 
 	// ici tester que les 2 sommets sont bien existants dans le graphe
-	if(!PElement< Sommet<T> >::appartient(debut, lSommets)) throw Erreur("début d'arête non défini");
-	if(!PElement< Sommet<T> >::appartient(fin, lSommets)) throw Erreur("fin d'arête non définie");
+	//if(!PElement< Sommet<T> >::appartient(debut, lSommets)) throw Erreur("début d'arête non défini");
+	//if(!PElement< Sommet<T> >::appartient(fin, lSommets)) throw Erreur("fin d'arête non définie");
 
 	nouvelleArete = new Arete<S, T>(prochaineClef++, debut, fin, info);
 

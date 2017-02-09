@@ -1,7 +1,12 @@
 #pragma once
 #include <sstream>
 #include <string>
+#include <stdio.h>
+#include <iostream>
 #include <string.h>
+
+#include "Erreur.h"
+
 using namespace std;
 
 class GElement
