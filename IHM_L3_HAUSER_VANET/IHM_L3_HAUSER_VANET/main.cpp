@@ -14,11 +14,6 @@ int main()
 	cout << "s2 = " << s2 << endl << endl;
 
 
-
-
-
-
-
 	Sommet<double> * debut = new Sommet<double>(23, 2.71);
 	Sommet<double> * fin = new Sommet<double>(47, 1.41);
 
@@ -36,6 +31,19 @@ int main()
 
 	cout << "g = " << g << endl;
 
+	Graphe<string, char> g2;
+	Sommet<char> *som1 = g2.creeSommet('A');
+	Sommet<char> *som2 = g2.creeSommet('B');
+	Sommet<char> *som3 = g2.creeSommet('C');
+
+	g2.creeArete(som1, som2, "machin");
+	g2.creeArete(som2, som3, "truc");
+	g2.creeArete(som3, som1, "bidule");
+
+	cout << "cout g2 = " << g2.cout() << endl;
+	cout << "coucou hibou" << endl;
+	string str = PElement<Arete<string,char>>::toString(g2.getAretesParSommet(som1));
+	cout << "Arete som1 = " << str << endl;
 
 	char ch; cin >> ch;
 	return 0;

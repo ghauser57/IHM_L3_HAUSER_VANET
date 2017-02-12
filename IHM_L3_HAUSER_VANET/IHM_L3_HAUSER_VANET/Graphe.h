@@ -65,7 +65,11 @@ public:
 	* */
 	Arete<S, T> * getAreteParSommets(const Sommet<T> * s1, const Sommet<T> * s2) const;
 
+	const S cout() const;
 
+	PElement< Arete<S, T> > * Graphe<S, T>::getAretesParSommet(const Sommet<T> * s) const;
+
+	const PElement < Graphe<S, T> * > * Graphe<S, T>::getAllHamiltoniens() const;
 	//---------------------- Graphe ----------------------------------
 };
 
@@ -205,4 +209,38 @@ PElement< pair< Sommet<T> *, Arete<S, T>* > >  *  Graphe<S, T>::adjacences(const
 				(new pair< Sommet<T> *, Arete<S, T>* >
 				(l->v->debut, l->v), r);
 	return r;
+}
+
+template <class S, class T>
+const S Graphe<S, T>::cout() const
+{
+	S temp{};
+	PElement<Arete<S, T>> * a = lAretes;
+	while (a!=NULL)
+	{
+		temp = temp + a->v->v;
+		a = a->s;
+	}
+	return temp;
+}
+
+template <class S, class T>
+PElement< Arete<S, T> > * Graphe<S, T>::getAretesParSommet(const Sommet<T> * s) const
+{
+	PElement<Arete<S, T> > * temp = NULL;
+	PElement<Arete<S, T> > * l = lAretes;
+
+	while (l != NULL)
+	{
+		if (l->v->estEgal(s, l->v->fin))
+			temp = new PElement< Arete<S, T> >(l->v, temp);
+	}
+
+	return temp;
+}
+
+template <class S, class T>
+const PElement < Graphe<S, T> * > * Graphe<S, T>::getAllHamiltoniens() const
+{
+	return NULL;
 }
