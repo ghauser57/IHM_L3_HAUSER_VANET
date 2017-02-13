@@ -36,14 +36,13 @@ int main()
 	Sommet<char> *som2 = g2.creeSommet('B');
 	Sommet<char> *som3 = g2.creeSommet('C');
 
-	g2.creeArete(som1, som2, "machin");
+	Arete<string, char> * arr1 = g2.creeArete(som1, som2, "machin");
 	g2.creeArete(som2, som3, "truc");
 	g2.creeArete(som3, som1, "bidule");
 
 	cout << "cout g2 = " << g2.cout() << endl;
-	cout << "coucou hibou" << endl;
-	string str = PElement<Arete<string,char>>::toString(g2.getAretesParSommet(som1));
-	cout << "Arete som1 = " << str << endl;
+
+	cout << *(g2.adjacences(som1)->s->v->second) << endl;	
 
 	char ch; cin >> ch;
 	return 0;

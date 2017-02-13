@@ -67,8 +67,6 @@ public:
 
 	const S cout() const;
 
-	PElement< Arete<S, T> > * Graphe<S, T>::getAretesParSommet(const Sommet<T> * s) const;
-
 	const PElement < Graphe<S, T> * > * Graphe<S, T>::getAllHamiltoniens() const;
 	//---------------------- Graphe ----------------------------------
 };
@@ -225,22 +223,8 @@ const S Graphe<S, T>::cout() const
 }
 
 template <class S, class T>
-PElement< Arete<S, T> > * Graphe<S, T>::getAretesParSommet(const Sommet<T> * s) const
-{
-	PElement<Arete<S, T> > * temp = NULL;
-	PElement<Arete<S, T> > * l = lAretes;
-
-	while (l != NULL)
-	{
-		if (l->v->estEgal(s, l->v->fin))
-			temp = new PElement< Arete<S, T> >(l->v, temp);
-	}
-
-	return temp;
-}
-
-template <class S, class T>
 const PElement < Graphe<S, T> * > * Graphe<S, T>::getAllHamiltoniens() const
 {
+
 	return NULL;
 }
