@@ -1,4 +1,6 @@
 #pragma once
+#include <time.h> 
+#include <math.h>
 #include "Sommet.h"
 #include "Arete.h"
 #include "PElement.h"
@@ -54,6 +56,9 @@ public:
 	*/
 	PElement< pair< Sommet<T> *, Arete<S, T>* > >  *
 		adjacences(const Sommet<T> * sommet) const;
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  *
+		adjacencesPlus(const Sommet<T> * sommet) const;
+
 	operator string() const;
 
 	/**
@@ -67,7 +72,7 @@ public:
 
 	const S cout() const;
 
-	const PElement < Graphe<S, T> * > * Graphe<S, T>::getAllHamiltoniens() const;
+	void changementAleatoire();
 	//---------------------- Graphe ----------------------------------
 };
 
@@ -210,6 +215,22 @@ PElement< pair< Sommet<T> *, Arete<S, T>* > >  *  Graphe<S, T>::adjacences(const
 }
 
 template <class S, class T>
+PElement< pair< Sommet<T> *, Arete<S, T>* > >  *  Graphe<S, T>::adjacencesPlus(const Sommet<T> * sommet) const
+{
+	const PElement< Arete<S, T> > * l;
+
+	PElement< pair< Sommet<T> *, Arete<S, T>* > > * r;				// pair< Sommet<T> *, Arete<S,T>* >
+
+	for (l = lAretes, r = NULL; l; l = l->s)
+	{
+		if (sommet == l->v->debut)
+			r = new PElement< pair< Sommet<T> *, Arete<S, T>* > >
+			(new pair< Sommet<T> *, Arete<S, T>* >(l->v->fin, l->v), r);
+	}
+	return r;
+}
+
+template <class S, class T>
 const S Graphe<S, T>::cout() const
 {
 	S temp{};
@@ -223,8 +244,60 @@ const S Graphe<S, T>::cout() const
 }
 
 template <class S, class T>
-const PElement < Graphe<S, T> * > * Graphe<S, T>::getAllHamiltoniens() const
+void Graphe<S, T>::changementAleatoire()
 {
-
-	return NULL;
+	srand(time(NULL));
+	int max = this->nombreSommets()-1;
+	int min = 0;
+	int nbA, nbB;
+	Sommet<T> * A;
+	Sommet<T> * B;
+	PElement<Sommet<T>> * parcours;
+	do
+	{
+		parcours = lSommets;
+		nbA = (rand() % (max - min + 1)) + min;
+		nbB = (rand() % (max - min + 1)) + min;
+		for (int i = 0; i < nbA; i++)
+		{
+			parcours = parcours->s;
+		}
+		A = parcours->v;
+		parcours = lSommets;
+		for (int j = 0; j < nbB; j++)
+		{
+			parcours = parcours->s;
+		}
+		B = parcours->v;
+	} while (this->getAreteParSommets(A, B) != NULL || A == B);
+	printf(((string)*A).c_str());
+	printf(((string)*B).c_str());
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paireAC = this->adjacencesPlus(A);
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paireBD = this->adjacencesPlus(B);
+	paireBD->v->second->debut = paireAC->v->first;
+	paireAC->v->second->fin = B;
+	paireBD->v->second->v = paireAC->v->first->v.distance(paireBD->v->first->v);
+	paireAC->v->second->v = A->v.distance(B->v);
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paire1;
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paire2;
+	Sommet<T> * s = paireAC->v->first;
+	paire1 = this->adjacencesPlus(s);
+	printf("wala\n");
+	if (paire1->v->first == paireBD->v->first)
+		paire1 = paire1->s;
+	paire2 = this->adjacencesPlus(paire1->v->first);
+	paire1->v->second->debut = paire1->v->first;
+	paire1->v->second->fin = s;
+	s = paire1->v->first;
+	printf(((string)*s).c_str());
+	while (!(s == B))
+	{
+		paire1 = paire2;
+		printf("wala\n");
+		paire2 = this->adjacencesPlus(paire1->v->first);
+		paire1->v->second->debut = paire1->v->first;
+		paire1->v->second->fin = s;
+		s = paire1->v->first;
+		printf(((string)*s).c_str());
+	} 
 }

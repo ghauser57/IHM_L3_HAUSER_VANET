@@ -24,3 +24,8 @@ void fusionne(const double x[], const double y[], int m, Vecteur2D v[])
 	for (i = 0; i <= m; ++i)
 		v[i] = Vecteur2D(x[i], y[i]);
 }
+
+double Vecteur2D::distance(const Vecteur2D & u)
+{
+	return sqrt(pow(u.x - this->x, 2) + pow(u.y - this->y, 2));
+}

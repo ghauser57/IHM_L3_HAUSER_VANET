@@ -36,6 +36,8 @@ public:
 
 	operator string() const;
 
+	double distance(const Vecteur2D & u);
+
 	//------------------ Vecteur2D ----------------------------------
 };
 
@@ -96,6 +98,5 @@ inline double normeSup(const Vecteur2D& u)
 {
 	//return max(abs(u.x), abs(u.y));
 }
-
 
 #endif /* VECTEUR2D_H_ */

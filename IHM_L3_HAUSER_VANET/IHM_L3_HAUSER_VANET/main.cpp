@@ -1,8 +1,9 @@
 #include "Graphe.h"
-
+#include "Vecteur2D.h"
 
 int main()
 {
+	/*
 	GElement e(5);
 
 	cout << "e = " << e << endl << endl;
@@ -43,6 +44,42 @@ int main()
 	cout << "cout g2 = " << g2.cout() << endl;
 
 	cout << *(g2.adjacences(som1)->s->v->second) << endl;	
+	*/
+
+	Vecteur2D v1(0, 0);
+	Vecteur2D v2(0, 2);
+	Vecteur2D v3(1, 2);
+	Vecteur2D v4(2, 2);
+	Vecteur2D v5(2, 0);
+	Vecteur2D v6(1, 0);
+	
+
+	Graphe<double, Vecteur2D> g2;
+	Sommet<Vecteur2D> *som1 = g2.creeSommet(v1);
+	Sommet<Vecteur2D> *som2 = g2.creeSommet(v2);
+	Sommet<Vecteur2D> *som3 = g2.creeSommet(v3);
+	Sommet<Vecteur2D> *som4 = g2.creeSommet(v4);
+	Sommet<Vecteur2D> *som5 = g2.creeSommet(v5);
+	Sommet<Vecteur2D> *som6 = g2.creeSommet(v6);
+
+	Arete<double, Vecteur2D> * arr1 = g2.creeArete(som1, som2, som1->v.distance(som2->v));
+	g2.creeArete(som2, som3, som2->v.distance(som3->v));
+	g2.creeArete(som3, som4, som3->v.distance(som4->v));
+	g2.creeArete(som4, som5, som4->v.distance(som5->v));
+	g2.creeArete(som5, som6, som5->v.distance(som6->v));
+	g2.creeArete(som6, som1, som6->v.distance(som1->v));
+
+	cout << "cout g2 = " << g2.cout() << endl;
+
+	//cout << "distance s1 s5 = " << som1->v.distance(som5->v) << endl;
+
+	//cout << "arr = " << *arr1 << endl;
+
+	//cout << "g = " << g2 << endl;
+
+	g2.changementAleatoire();
+
+	cout << "cout g2 = " << g2.cout() << endl;
 
 	char ch; cin >> ch;
 	return 0;
