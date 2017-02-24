@@ -84,28 +84,33 @@ template <class S, class T>
 Graphe<S, T>::Graphe() :prochaineClef(0), lAretes(NULL), lSommets(NULL){}
 
 template <class S, class T>
-Graphe<S, T>::Graphe(const Graphe<S, T> & graphe) : prochaineClef(graphe.prochaineClef), lAretes(new PElement<Arete<S, T>>(*graphe.lAretes)), lSommets(NULL)
+Graphe<S, T>::Graphe(const Graphe<S, T> & graphe) : prochaineClef(graphe.prochaineClef), lAretes(NULL), lSommets(new PElement<Sommet<T>>(*graphe.lSommets))
 {
-	lSommets = NULL;
-	PElement<Arete<S, T>> * temp = lAretes;
+	lAretes = NULL;
+	PElement<Arete<S,T>> * temp = graphe.lAretes;
 	while (temp != NULL)
 	{
+		PElement<Sommet<T>> * tempSdeb = lSommets;
+		PElement<Sommet<T>> * tempSfin = lSommets;
+		/*
 		if (!lSommets->isIn(temp->v->debut))
 			lSommets = new PElement<Sommet<T>>(temp->v->debut, lSommets);
 		if (!lSommets->isIn(temp->v->fin))
-			lSommets = new PElement<Sommet<T>>(temp->v->fin, lSommets);
+			lSommets = new PElement<Sommet<T>>(temp->v->fin, lSommets);*/
+		while (*temp->v->debut != *tempSdeb->v && tempSdeb != NULL)
+			tempSdeb = tempSdeb->s;
+		while (*temp->v->fin != *tempSfin->v && tempSfin != NULL)
+			tempSfin = tempSfin->s;
+		S * v = new S((temp->v->v));
+		lAretes = new PElement<Arete<S, T>>(new Arete<S, T>(temp->v->clef, tempSdeb->v, tempSfin->v, *v), lAretes);
+		temp = temp->s;
 	}
 }
 
 template <class S, class T>
 const Graphe<S, T> & Graphe<S, T>::operator = (const Graphe<S, T> & graphe)
 {
-	if (this != &graphe){
-		prochaineClef = graphe.prochaineClef;
-		lAretes = graphe.lAretes;
-		lSommets = graphe.lSommets;
-	}
-	return *this;
+	return *new Graphe<S,T>(graphe);
 }
 
 template <class S, class T>

@@ -77,7 +77,7 @@ int main()
 	//cout << "arr = " << *arr1 << endl;
 
 	//cout << "g = " << g2 << endl;
-
+	/*
 	Graphe<double,Vecteur2D> g3 = changementAleatoire(g2);
 	cout << "cout g2 (apres cA) = " << cout1(g2) << endl;
 	cout << "cout g3 = " << cout1(g3) << endl;
@@ -85,20 +85,20 @@ int main()
 	Graphe<double, Vecteur2D> g4 = changementAleatoire(g3);
 	cout << "cout g2 (apres cA2) = " << cout1(g2) << endl;
 	cout << "cout g3 = " << cout1(g3) << endl;
-	cout << "cout g4 = " << cout1(g4) << endl;
+	cout << "cout g4 = " << cout1(g4) << endl;*/
 
-	/*
+	
 	Graphe<double, Vecteur2D> g = recuitSimule(200.0,
 		0.0,
-		200,
-		30,
+		10,
+		5,
 		g2,
 		cout1,
 		changementAleatoire,
 		Succ);
 
 	cout << "cout g = " << cout1(g) << endl;
-	*/
+	
 	char ch; cin >> ch;
 	return 0;
 }

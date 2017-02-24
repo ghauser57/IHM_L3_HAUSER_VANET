@@ -29,3 +29,13 @@ double Vecteur2D::distance(const Vecteur2D & u)
 {
 	return sqrt(pow(u.x - this->x, 2) + pow(u.y - this->y, 2));
 }
+
+bool Vecteur2D::operator == (const Vecteur2D & v) const
+{
+	return (this->x == v.x && this->y == v.y);
+}
+
+bool Vecteur2D::operator != (const Vecteur2D & v) const
+{
+	return !(*this == v);
+}

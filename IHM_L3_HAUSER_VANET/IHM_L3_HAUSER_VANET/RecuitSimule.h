@@ -108,10 +108,8 @@ S recuitSimule(const double & tInitiale,
 			nombreTentatives++;
 			sPrecedente = s;
 			printf("avant changement\n");
-			printf(((string)s).c_str());
 			s = changementAleatoire(s);
 			printf("après changement\n");
-			printf(((string)s).c_str());
 			if (cout1(s) < cout1(sPrecedente))
 			{
 				printf("if\n");

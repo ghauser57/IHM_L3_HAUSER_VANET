@@ -38,6 +38,9 @@ public:
 
 	double distance(const Vecteur2D & u);
 
+	bool operator == (const Vecteur2D & v) const;
+	bool operator != (const Vecteur2D & v) const;
+
 	//------------------ Vecteur2D ----------------------------------
 };
 

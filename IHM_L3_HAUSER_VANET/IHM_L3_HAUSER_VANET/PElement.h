@@ -45,6 +45,7 @@ bool PElement<T>::isIn(const T* elem)
 		temp = new PElement<T>(this->v, this->s);*/
 	while (temp != NULL)
 	{
+		printf("pas null\n");
 		if (elem == temp->v)
 			return true;
 		temp = temp->s;
@@ -55,16 +56,26 @@ bool PElement<T>::isIn(const T* elem)
 template <class T>
 PElement<T>::PElement(const PElement<T> & pe) :v(NULL), s(NULL)
 {
-	PElement<T> * temp = new PElement<T>(pe.v,pe.s);
-	PElement<T> * temp2 = NULL;
-	
-	v = new T(*temp->v);
-	while (temp->s != NULL)
+	if (&pe != NULL)
 	{
-		temp = temp->s;
-		temp2 = new PElement<T>(new T(*temp->v), temp2);
+		PElement<T> * temp = new PElement<T>(pe.v, pe.s);
+		PElement<T> * temp2 = NULL;
+		PElement<T> * temp3 = NULL;
+
+		v = new T(*temp->v);
+		while (temp->s != NULL)
+		{
+			temp = temp->s;
+			temp2 = new PElement<T>(new T(*temp->v), temp2);
+		}
+		/*
+		while (temp2->s != NULL)
+		{
+		temp3 = new PElement<T>(new T(*temp2->v), temp3);
+		temp2 = temp2->s;
+		}*/
+		s = temp2;
 	}
-	s = temp2;
 }
 /*
 template <class T>
