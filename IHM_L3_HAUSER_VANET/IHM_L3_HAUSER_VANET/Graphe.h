@@ -70,9 +70,9 @@ public:
 	* */
 	Arete<S, T> * getAreteParSommets(const Sommet<T> * s1, const Sommet<T> * s2) const;
 
-	const S cout() const;
+	//const S cout() const;
 
-	void changementAleatoire();
+	//void changementAleatoire();
 	//---------------------- Graphe ----------------------------------
 };
 
@@ -84,15 +84,28 @@ template <class S, class T>
 Graphe<S, T>::Graphe() :prochaineClef(0), lAretes(NULL), lSommets(NULL){}
 
 template <class S, class T>
-Graphe<S, T>::Graphe(const Graphe<S, T> & graphe)
+Graphe<S, T>::Graphe(const Graphe<S, T> & graphe) : prochaineClef(graphe.prochaineClef), lAretes(new PElement<Arete<S, T>>(*graphe.lAretes)), lSommets(NULL)
 {
-	throw Erreur("pas encore écrit : reste à faire");
+	lSommets = NULL;
+	PElement<Arete<S, T>> * temp = lAretes;
+	while (temp != NULL)
+	{
+		if (!lSommets->isIn(temp->v->debut))
+			lSommets = new PElement<Sommet<T>>(temp->v->debut, lSommets);
+		if (!lSommets->isIn(temp->v->fin))
+			lSommets = new PElement<Sommet<T>>(temp->v->fin, lSommets);
+	}
 }
 
 template <class S, class T>
 const Graphe<S, T> & Graphe<S, T>::operator = (const Graphe<S, T> & graphe)
 {
-	throw Erreur("pas encore écrit : reste à faire");
+	if (this != &graphe){
+		prochaineClef = graphe.prochaineClef;
+		lAretes = graphe.lAretes;
+		lSommets = graphe.lSommets;
+	}
+	return *this;
 }
 
 template <class S, class T>
@@ -229,7 +242,7 @@ PElement< pair< Sommet<T> *, Arete<S, T>* > >  *  Graphe<S, T>::adjacencesPlus(c
 	}
 	return r;
 }
-
+/*
 template <class S, class T>
 const S Graphe<S, T>::cout() const
 {
@@ -249,55 +262,49 @@ void Graphe<S, T>::changementAleatoire()
 	srand(time(NULL));
 	int max = this->nombreSommets()-1;
 	int min = 0;
+	int nbTemp;
 	int nbA, nbB;
 	Sommet<T> * A;
 	Sommet<T> * B;
 	PElement<Sommet<T>> * parcours;
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paire1;
+	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paire2;
 	do
 	{
 		parcours = lSommets;
 		nbA = (rand() % (max - min + 1)) + min;
 		nbB = (rand() % (max - min + 1)) + min;
+		if (nbA > nbB)
+		{
+			nbTemp = nbB;
+			nbB = nbA;
+			nbA = nbTemp;
+		}
 		for (int i = 0; i < nbA; i++)
 		{
 			parcours = parcours->s;
 		}
 		A = parcours->v;
-		parcours = lSommets;
-		for (int j = 0; j < nbB; j++)
+		for (int j = nbA; j < nbB; j++)
 		{
 			parcours = parcours->s;
 		}
 		B = parcours->v;
 	} while (this->getAreteParSommets(A, B) != NULL || A == B);
-	printf(((string)*A).c_str());
-	printf(((string)*B).c_str());
 	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paireAC = this->adjacencesPlus(A);
 	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paireBD = this->adjacencesPlus(B);
+	Sommet<T> * s = paireAC->v->first;
+	paire2 = this->adjacencesPlus(s);
 	paireBD->v->second->debut = paireAC->v->first;
 	paireAC->v->second->fin = B;
 	paireBD->v->second->v = paireAC->v->first->v.distance(paireBD->v->first->v);
 	paireAC->v->second->v = A->v.distance(B->v);
-	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paire1;
-	PElement< pair< Sommet<T> *, Arete<S, T>* > >  * paire2;
-	Sommet<T> * s = paireAC->v->first;
-	paire1 = this->adjacencesPlus(s);
-	printf("wala\n");
-	if (paire1->v->first == paireBD->v->first)
-		paire1 = paire1->s;
-	paire2 = this->adjacencesPlus(paire1->v->first);
-	paire1->v->second->debut = paire1->v->first;
-	paire1->v->second->fin = s;
-	s = paire1->v->first;
-	printf(((string)*s).c_str());
-	while (!(s == B))
+	do
 	{
 		paire1 = paire2;
-		printf("wala\n");
 		paire2 = this->adjacencesPlus(paire1->v->first);
 		paire1->v->second->debut = paire1->v->first;
 		paire1->v->second->fin = s;
 		s = paire1->v->first;
-		printf(((string)*s).c_str());
-	} 
-}
+	} while (!(s == B));
+}*/

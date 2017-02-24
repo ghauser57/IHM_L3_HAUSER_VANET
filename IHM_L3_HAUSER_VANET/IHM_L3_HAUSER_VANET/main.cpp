@@ -1,5 +1,6 @@
 #include "Graphe.h"
 #include "Vecteur2D.h"
+#include "RecuitSimule.h"
 
 int main()
 {
@@ -62,14 +63,14 @@ int main()
 	Sommet<Vecteur2D> *som5 = g2.creeSommet(v5);
 	Sommet<Vecteur2D> *som6 = g2.creeSommet(v6);
 
-	Arete<double, Vecteur2D> * arr1 = g2.creeArete(som1, som2, som1->v.distance(som2->v));
-	g2.creeArete(som2, som3, som2->v.distance(som3->v));
-	g2.creeArete(som3, som4, som3->v.distance(som4->v));
+	Arete<double, Vecteur2D> * arr1 = g2.creeArete(som1, som3, som1->v.distance(som3->v));
+	g2.creeArete(som3, som6, som3->v.distance(som6->v));
+	g2.creeArete(som6, som4, som6->v.distance(som4->v));
 	g2.creeArete(som4, som5, som4->v.distance(som5->v));
-	g2.creeArete(som5, som6, som5->v.distance(som6->v));
-	g2.creeArete(som6, som1, som6->v.distance(som1->v));
+	g2.creeArete(som5, som2, som5->v.distance(som2->v));
+	g2.creeArete(som2, som1, som2->v.distance(som1->v));
 
-	cout << "cout g2 = " << g2.cout() << endl;
+	cout << "cout g2 = " << cout1(g2) << endl;
 
 	//cout << "distance s1 s5 = " << som1->v.distance(som5->v) << endl;
 
@@ -77,10 +78,27 @@ int main()
 
 	//cout << "g = " << g2 << endl;
 
-	g2.changementAleatoire();
+	Graphe<double,Vecteur2D> g3 = changementAleatoire(g2);
+	cout << "cout g2 (apres cA) = " << cout1(g2) << endl;
+	cout << "cout g3 = " << cout1(g3) << endl;
 
-	cout << "cout g2 = " << g2.cout() << endl;
+	Graphe<double, Vecteur2D> g4 = changementAleatoire(g3);
+	cout << "cout g2 (apres cA2) = " << cout1(g2) << endl;
+	cout << "cout g3 = " << cout1(g3) << endl;
+	cout << "cout g4 = " << cout1(g4) << endl;
 
+	/*
+	Graphe<double, Vecteur2D> g = recuitSimule(200.0,
+		0.0,
+		200,
+		30,
+		g2,
+		cout1,
+		changementAleatoire,
+		Succ);
+
+	cout << "cout g = " << cout1(g) << endl;
+	*/
 	char ch; cin >> ch;
 	return 0;
 }

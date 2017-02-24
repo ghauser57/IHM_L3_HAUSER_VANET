@@ -18,6 +18,8 @@ public:
 	S v;
 	Arete(int clef, Sommet<T> * debut, Sommet<T> * fin, const S & v) :
 		GElement(clef), debut(debut), fin(fin), v(v){}
+	Arete(const Arete<S,T> & a) :
+		GElement(a.clef), debut(new Sommet<T>(*a.debut)), fin(new Sommet<T>(*a.fin)), v(a.v){}
 
 	operator string () const;
 

@@ -10,6 +10,9 @@ public:
 	PElement<T> * s;
 
 	PElement(T* v, PElement<T> * s) :v(v), s(s){}
+	PElement(const PElement<T> & pe);
+
+	PElement<T> * operator = (const PElement<T> & Pelem);
 
 	static int taille(const PElement<T> * l);
 
@@ -27,8 +30,57 @@ public:
 	* et efface toutes les données *v
 	*
 	* */
+	bool isIn(const T* elem);
+
 	static void efface2(PElement<T>* & l);
 };
+
+template <class T>
+bool PElement<T>::isIn(const T* elem)
+{
+	PElement<T> * temp = this;
+	/*if (this == NULL)
+		temp = NULL;
+	else
+		temp = new PElement<T>(this->v, this->s);*/
+	while (temp != NULL)
+	{
+		if (elem == temp->v)
+			return true;
+		temp = temp->s;
+	}
+	return false;
+}
+
+template <class T>
+PElement<T>::PElement(const PElement<T> & pe) :v(NULL), s(NULL)
+{
+	PElement<T> * temp = new PElement<T>(pe.v,pe.s);
+	PElement<T> * temp2 = NULL;
+	
+	v = new T(*temp->v);
+	while (temp->s != NULL)
+	{
+		temp = temp->s;
+		temp2 = new PElement<T>(new T(*temp->v), temp2);
+	}
+	s = temp2;
+}
+/*
+template <class T>
+PElement<T> * PElement<T>::operator = (const PElement<T> & Pelem){
+	PElement<T> * temp = &Pelem;
+	PElement<T> * val = NULL;
+
+	if (this != &pelem){
+		for (int i = 0; i < PElement<T>::taille(&Pelem); i++){
+			val = new PElement<T>(temp->v, val);
+			temp = temp->s;
+		}
+	}
+
+	return val;
+}*/
 
 template <class T>
 int PElement<T>::taille(const PElement<T> * l)

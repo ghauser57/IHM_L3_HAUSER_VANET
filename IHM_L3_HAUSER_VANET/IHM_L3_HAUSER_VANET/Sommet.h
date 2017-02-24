@@ -11,6 +11,7 @@ public:
 	int degre;
 	T v;
 	Sommet(const int clef, const T & v) :GElement(clef), degre(0), v(v){}
+	Sommet(const Sommet<T> & s) :GElement(s.clef), degre(s.degre), v(s.v){}
 
 	operator string () const;
 };
