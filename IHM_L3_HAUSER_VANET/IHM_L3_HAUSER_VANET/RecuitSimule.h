@@ -24,7 +24,7 @@ double cout1(const Graphe<S, T> & g)
 		temp = temp + a->v->v;
 		a = a->s;
 	}
-	printf("cout exec\n");
+	//printf("cout exec\n");
 	return temp;
 }
 
@@ -107,19 +107,19 @@ S recuitSimule(const double & tInitiale,
 		{
 			nombreTentatives++;
 			sPrecedente = s;
-			printf("avant changement\n");
+			//printf("avant changement\n");
 			s = changementAleatoire(s);
-			printf("après changement\n");
+			//printf("après changement\n");
 			if (cout1(s) < cout1(sPrecedente))
 			{
-				printf("if\n");
+				//printf("if\n");
 				nombreSucces--;
 				if (cout1(s) < cout1(sBest))
 					sBest = s;
 			}
 			else
 			{
-				printf("else\n");
+				//printf("else\n");
 				double v = tirageAleatoire();
 				double dCout = cout1(s) - cout1(sPrecedente);
 				if (v < exp(-(dCout / t)))

@@ -110,7 +110,11 @@ Graphe<S, T>::Graphe(const Graphe<S, T> & graphe) : prochaineClef(graphe.prochai
 template <class S, class T>
 const Graphe<S, T> & Graphe<S, T>::operator = (const Graphe<S, T> & graphe)
 {
-	return *new Graphe<S,T>(graphe);
+	Graphe<S,T> * temp = new Graphe<S, T>(graphe);
+	this->prochaineClef = temp->prochaineClef;
+	this->lAretes = temp->lAretes;
+	this->lSommets = temp->lSommets;
+	return *this;
 }
 
 template <class S, class T>

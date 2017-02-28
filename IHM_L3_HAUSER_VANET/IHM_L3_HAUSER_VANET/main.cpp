@@ -88,10 +88,10 @@ int main()
 	cout << "cout g4 = " << cout1(g4) << endl;*/
 
 	
-	Graphe<double, Vecteur2D> g = recuitSimule(200.0,
+	Graphe<double, Vecteur2D> g = recuitSimule(2000.0,
 		0.0,
-		10,
-		5,
+		1000,
+		500,
 		g2,
 		cout1,
 		changementAleatoire,
