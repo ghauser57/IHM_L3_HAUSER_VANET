@@ -9,12 +9,12 @@ int main()
 
 	char ch;
 
-	Vecteur2D v1(0, 0);
-	Vecteur2D v2(0, 2);
-	Vecteur2D v3(1, 2);
-	Vecteur2D v4(2, 2);
-	Vecteur2D v5(2, 0);
-	Vecteur2D v6(1, 0);
+	Vecteur2D v1(1, 2);
+	Vecteur2D v2(3, 1);
+	Vecteur2D v3(5, 2);
+	Vecteur2D v4(5, 3);
+	Vecteur2D v5(3, 4);
+	Vecteur2D v6(1, 3);
 	
 
 	Graphe<double, Vecteur2D> g2;
@@ -46,24 +46,27 @@ int main()
 
 	cout << "cout g = " << cout1(g) << endl;
 	
-	cout << "tapez un caractère, puis ENTER\n"; 
+	cout << "tapez un caractÃ¨re, puis ENTER\n"; 
 
 	cin >> ch;
 
-	//----------------- on crée le fichier texte pour dessiner g1 ------------------------------
-
+	//----------------- on crÃ©e le fichier texte pour dessiner g1 ------------------------------
 
 	string nomFichierDessin = "grapheHexagonalComplet.txt";
-	ofstream f(nomFichierDessin);							// ouverture de f en écriture, en mode texte (cf. doc cplusplus.com)
-	Vecteur2D coinBG(-1, -1), coinHD(5, 5);					// limites de la fenêtre à visualiser. calculées à partir des coordonnées des sommets
+	string dessin2 = "dessin.txt";
+	ofstream f(nomFichierDessin);	
+	ofstream f2(dessin2);	// ouverture de f en Ã©criture, en mode texte (cf. doc cplusplus.com)
+	Vecteur2D coinBG(-1, -1), coinHD(5, 5);					// limites de la fenÃªtre Ã  visualiser. calculÃ©es Ã  partir des coordonnÃ©es des sommets
 	string couleurRepere = "blue";
-	int rayonSommet = 5;									// unité :  pixel
+	int rayonSommet = 5;									// unitÃ© :  pixel
 	string couleurSommets = "red";
 	string couleurAretes = "blue";
 
 	DessinGrapheRecuitSimule<double, Vecteur2D>::ecritGraphe(f, g, coinBG, coinHD, couleurRepere, rayonSommet, couleurSommets, couleurAretes);
 
-	cout << "le fichier texte de  dessin " << nomFichierDessin << " a été créé" << endl;
+	DessinGrapheRecuitSimule<double, Vecteur2D>::ecritGraphe(f2, g2, coinBG, coinHD, couleurRepere, rayonSommet, couleurSommets, couleurAretes);
+
+	cout << "le fichier texte de  dessin " << nomFichierDessin << " a Ã©tÃ© crÃ©Ã©" << endl;
 
 	cin >> ch;
 
