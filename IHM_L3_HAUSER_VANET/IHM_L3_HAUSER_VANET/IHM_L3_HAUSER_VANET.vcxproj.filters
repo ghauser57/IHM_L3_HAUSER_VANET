@@ -34,6 +34,12 @@
     <Filter Include="Fichiers sources\Erreur">
       <UniqueIdentifier>{d42a5bae-1f96-4b93-a8e2-9a7782cb67dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\Dessin">
+      <UniqueIdentifier>{d47fd5ea-ac93-4376-a759-f3ef90e9e71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Dessin">
+      <UniqueIdentifier>{5b00b2ff-e581-4767-a7bd-76d0808290b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Vecteur2D.cpp">
@@ -47,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DessinGraphe.cpp">
+      <Filter>Fichiers sources\Dessin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="Erreur.h">
       <Filter>Fichiers d%27en-tête\Erreur</Filter>
+    </ClInclude>
+    <ClInclude Include="DessinGraphe.h">
+      <Filter>Fichiers d%27en-tête\Dessin</Filter>
+    </ClInclude>
+    <ClInclude Include="DessinGrapheRecuitSimule.h">
+      <Filter>Fichiers d%27en-tête\Dessin</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

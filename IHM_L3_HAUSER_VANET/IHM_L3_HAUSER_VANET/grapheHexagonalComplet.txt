@@ -1,0 +1,41 @@
+titre = carte routière
+legende = carte routière simplifiée représentée par un graphe
+resume = carte routière
+type de scene = courbes
+coin bas gauche de la figure sur l'écran en coordonnées monde = ( -1, -1)
+coin haut droit de la figure sur l'écran en coordonnées monde = ( 5, 5)
+nombre de points remarquables = 9
+point remarquable = 2 black (0,0) O
+point remarquable = 2 black (1,0) 1
+point remarquable = 2 black (0,1) 1
+point remarquable = 5 red ( 1, 0) s6( 1, 0)
+point remarquable = 5 red ( 2, 0) s5( 2, 0)
+point remarquable = 5 red ( 2, 2) s4( 2, 2)
+point remarquable = 5 red ( 1, 2) s3( 1, 2)
+point remarquable = 5 red ( 0, 2) s2( 0, 2)
+point remarquable = 5 red ( 0, 0) s1( 0, 0)
+nombre de courbes = 6
+couleur =  blue
+nombre de points = 2
+( 0, 2)
+( 0, 0)
+couleur =  blue
+nombre de points = 2
+( 2, 2)
+( 0, 2)
+couleur =  blue
+nombre de points = 2
+( 1, 0)
+( 2, 2)
+couleur =  blue
+nombre de points = 2
+( 2, 0)
+( 1, 0)
+couleur =  blue
+nombre de points = 2
+( 1, 2)
+( 2, 0)
+couleur =  blue
+nombre de points = 2
+( 0, 0)
+( 1, 2)

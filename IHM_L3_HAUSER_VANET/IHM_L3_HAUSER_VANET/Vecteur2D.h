@@ -4,7 +4,7 @@
 *  Created on: 1 juil. 2011
 *      Author: Dominique
 */
-
+#pragma once
 #ifndef VECTEUR2D_H_
 #define VECTEUR2D_H_
 

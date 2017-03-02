@@ -66,6 +66,8 @@
   <ItemGroup>
     <ClInclude Include="AlgebreLineaire.h" />
     <ClInclude Include="Arete.h" />
+    <ClInclude Include="DessinGraphe.h" />
+    <ClInclude Include="DessinGrapheRecuitSimule.h" />
     <ClInclude Include="Erreur.h" />
     <ClInclude Include="GElement.h" />
     <ClInclude Include="Graphe.h" />
@@ -75,6 +77,7 @@
     <ClInclude Include="Vecteur2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DessinGraphe.cpp" />
     <ClCompile Include="Erreur.cpp" />
     <ClCompile Include="GElement.cpp" />
     <ClCompile Include="main.cpp" />
